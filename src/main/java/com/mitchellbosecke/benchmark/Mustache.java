@@ -3,10 +3,7 @@ package com.mitchellbosecke.benchmark;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.util.AbstractCollection;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Setup;
@@ -54,7 +51,7 @@ public class Mustache extends BaseBenchmark {
      * {@link com.github.mustachejava.util.DecoratedCollection} - we need the
      * first element at index 1.
      *
-     * @param <T>
+     * @params
      */
     private class StockCollection extends AbstractCollection<StockView> {
 

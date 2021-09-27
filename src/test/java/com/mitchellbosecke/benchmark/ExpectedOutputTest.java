@@ -15,7 +15,6 @@ import com.mitchellbosecke.pebble.error.PebbleException;
 import freemarker.template.TemplateException;
 
 /**
- *
  * @author Martin Kouba
  */
 public class ExpectedOutputTest {
@@ -31,7 +30,7 @@ public class ExpectedOutputTest {
         freemarker.setup();
         assertOutput(freemarker.benchmark());
     }
-    
+
     @Test
     public void testRockerOutput() throws IOException, TemplateException {
         Rocker rocker = new Rocker();
@@ -68,6 +67,13 @@ public class ExpectedOutputTest {
     }
 
     @Test
+    public void testHtmlTemplate() throws Exception {
+        HtmlTemplate htmlTemplate = new HtmlTemplate();
+        htmlTemplate.setup();
+        assertOutput(htmlTemplate.benchmark());
+    }
+
+    @Test
     public void testTrimouOutput() throws IOException {
         Trimou trimou = new Trimou();
         trimou.setup();
@@ -81,7 +87,7 @@ public class ExpectedOutputTest {
     private String readExpectedOutputResource() throws IOException {
         StringBuilder builder = new StringBuilder();
         try (BufferedReader in = new BufferedReader(new InputStreamReader(ExpectedOutputTest.class.getResourceAsStream("/expected-output.html")))) {
-            for (;;) {
+            for (; ; ) {
                 String line = in.readLine();
                 if (line == null)
                     break;
@@ -91,5 +97,6 @@ public class ExpectedOutputTest {
         // Remove all whitespaces
         return builder.toString().replaceAll("\\s", "");
     }
+
 
 }
